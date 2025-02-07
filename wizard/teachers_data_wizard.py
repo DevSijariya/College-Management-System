@@ -1,4 +1,4 @@
-from odoo import fields,models,api
+from odoo import fields,models
 
 class TeachersDataDelete(models.TransientModel):
     _name="teachers.data.delete"

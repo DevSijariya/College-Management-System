@@ -33,13 +33,13 @@ class TeacherDetail(models.Model):
         if existing_email:
             raise ValidationError("Email is Already Registered Please Use Another Email")
         else:
-            match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email'])
-            if match==None: 
+            match = re.match(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email'])
+            if match is None: 
                 raise ValidationError("Invalid Email Please Use A Valid Email")
         
         #Checking the Mobile Number 
         valid_number = re.match(r'^[6-9][0-9]{9}$', str(vals['number']))
-        if valid_number == None:
+        if valid_number is None:
             raise ValidationError("Invalid Mobile Number Please Enter A Valid Number")
         else:
             return super(TeacherDetail,self).create(vals)
@@ -60,16 +60,17 @@ class TeacherDetail(models.Model):
                     record['age'] = today.year - record.date_of_birth.year
                 else:
                     record['age'] = today.year - record.date_of_birth.year - 1
+                    if record['age']<=-1:
+                        raise ValidationError("Invalid Date Of Birth")
             else:
                 record['age'] = 0 
-        if record['age']<=-1:
-            raise ValidationError("Invalid Date Of Birth")
 
 
     def _data_delete(self):
         self.unlink()
-    
-    def button(self):
+
+    @staticmethod 
+    def button():
         return {
                 "name":"Delete data",
                 "type": "ir.actions.act_window",

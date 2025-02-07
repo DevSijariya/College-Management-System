@@ -27,7 +27,7 @@ class StudentDetail(models.Model):
 
     @api.ondelete(at_uninstall=False)
     def _unlink_record(self):
-        if any(record.active==True for record in self):
+        if any(record.active is True for record in self):
             raise UserError("You Can not delete this record")
     
     @api.constrains('roll_number')
