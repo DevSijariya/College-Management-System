@@ -1,0 +1,80 @@
+<odoo>
+    <data>
+        <record id="College_users_access_categeory" model="ir.module.category">
+            <field name="name">College_Management</field>
+        </record>
+        <record id="group_admin_user" model="res.groups">
+            <field name="name">Admin User</field>
+            <field name="category_id" ref="College_users_access_categeory"/>
+        </record>
+
+        <record id="admin_information_user_acl" model="ir.model.access">
+            <field name="name">admin.information.user.access</field>
+            <field name="model_id" ref="model_teachers_details"/>
+            <field name="group_id" ref="group_admin_user"/>
+            <field name="perm_read" eval="1"/> 
+            <field name="perm_write" eval="1"/> 
+            <field name="perm_create" eval="1"/> 
+            <field name="perm_unlink" eval="1"/> 
+        </record>
+
+        <record id="group_teacher_user" model="res.groups">
+            <field name="name">Teacher User</field>
+            <field name="category_id" ref="College_users_access_categeory"/>
+
+        </record>
+        <record id="teacher_information_user_acl" model="ir.model.access">
+            <field name="name">teacher.information.user.access</field>
+            <field name="model_id" ref="model_teachers_details"/>
+            <field name="group_id" ref="group_teacher_user"/>
+            <field name="perm_read" eval="1"/> 
+            <field name="perm_write" eval="1"/> 
+            <field name="perm_create" eval="1"/> 
+            <field name="perm_unlink" eval="0"/> 
+        </record>
+
+        <record id="group_student_user" model="res.groups">
+            <field name="name">Student User</field>
+            <field name="category_id" ref="College_users_access_categeory"/>
+
+        </record>
+        <record id="student_information_user_acl" model="ir.model.access">
+            <field name="name">student.information.user.access</field>
+            <field name="model_id" ref="model_teachers_details"/>
+            <field name="group_id" ref="group_student_user"/>
+            <field name="perm_read" eval="0"/> 
+            <field name="perm_write" eval="0"/> 
+            <field name="perm_create" eval="0"/> 
+            <field name="perm_unlink" eval="0"/> 
+        </record>
+        <record id="admin_information_courses_acl" model="ir.model.access">
+            <field name="name">admin.information.courses.access</field>
+            <field name="model_id" ref="model_courses_details"/>
+            <field name="group_id" ref="group_admin_user"/>
+            <field name="perm_read" eval="1"/> 
+            <field name="perm_write" eval="1"/> 
+            <field name="perm_create" eval="1"/> 
+            <field name="perm_unlink" eval="1"/> 
+        </record>        
+        <record id="teacher_information_courses_acl" model="ir.model.access">
+            <field name="name">teacher.information.courses.access</field>
+            <field name="model_id" ref="model_courses_details"/>
+            <field name="group_id" ref="group_teacher_user"/>
+            <field name="perm_read" eval="1"/> 
+            <field name="perm_write" eval="1"/> 
+            <field name="perm_create" eval="1"/> 
+            <field name="perm_unlink" eval="1"/> 
+        </record>       
+         <record id="students_information_courses_acl" model="ir.model.access">
+            <field name="name">teacher.information.courses.access</field>
+            <field name="model_id" ref="model_courses_details"/>
+            <field name="group_id" ref="group_student_user"/>
+            <field name="perm_read" eval="1"/> 
+            <field name="perm_write" eval="0"/> 
+            <field name="perm_create" eval="0"/> 
+            <field name="perm_unlink" eval="0"/> 
+        </record>
+
+    </data>
+
+</odoo>

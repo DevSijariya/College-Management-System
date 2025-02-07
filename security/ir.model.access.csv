@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink    
+access_students_details,students.details,model_students_details,,1,1,1,1
+access_teachers_data_delete,teachers.data.delete,model_teachers_data_delete,,1,1,1,1

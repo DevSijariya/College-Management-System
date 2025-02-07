@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="teacher_delete_view_form" model="ir.ui.view">
+            <field name="name">teacher.delete.view.form</field>
+            <field name="model">teachers.data.delete</field>
+            <field name="arch" type="xml">
+                <form string="Delete Data">
+                    <field name="teachers_id"/>    
+                    <p>Select your Id to delete the Data</p>
+                    <footer>
+                        <button string="Discard" special="cancel"/>
+                        <button class="btn-primary"
+                            name="action_delete_data"
+                            type="object"
+                            string="Delete Data"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

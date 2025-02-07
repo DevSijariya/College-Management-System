@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="configuration_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="res_model">teachers.details</field>
+        </record>
+    </data>
+
+    <menuitem id='Configuration_Menu' name="Configuration" parent="school_details" groups="group_admin_user" sequence="3"/>
+    <menuitem id="settings" name="Settings" parent="Configuration_Menu" action="configuration_action" sequence="1"/>
+</odoo>

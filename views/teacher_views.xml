@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <record id='teacher_information_list_view' model="ir.ui.view" >
+            <field name="name">teacher.information.list.view</field>
+            <field name="model">teachers.details</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="image" widget="image" options="{'size': [30, 30]}"/>
+                    <field name= "name"/>
+                    <field name= "age"/>
+                    <field name= "date_of_birth"/>
+                    <field name= "subject"/>
+                    <field name= "monthly_income"/>
+                    <field name="Description"/>
+                    <field name="email"/>
+                    <field name="number"/>
+                    <button name="button" type="object" string="Delete Record"/>
+                </list>
+            </field>
+        </record>
+        <record id='teacher_information_form_view' model="ir.ui.view" >
+            <field name="name">teacher.information.list.view</field>
+            <field name="model">teachers.details</field>
+            <field name="arch" type="xml">
+                <form >
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group style="display:flex;">
+                                <h1> <field name= "name" placeholder="Name" style="font-size:30px;"/></h1>
+                        </group>
+                        <group>
+                            <group col="4">
+                                <field name= "subject"/>
+                                <field name= "age"/>
+                                <field name= "date_of_birth"/>
+                                <field name="monthly_income"/>
+                            </group>
+                            <group col="4">
+                                <field name= "salary"/>
+                                <field name="email"/>
+                                <field name="number"/>
+                            </group>
+                        </group>
+                            <notebook>
+                                <page string="Description">
+                                    <field name="Description" placeholder="Describe Your Self"/>
+                                </page>
+                                <page string="Students">
+                                    <field name="student_id"/>
+                                </page>
+                            </notebook>
+                            <strong>Creating Date : <field name="today"/></strong> 
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="teacher_information_kanban_view" model="ir.ui.view">
+			<field name="name">teacher.information.kanban.view</field>
+			<field name="model">teachers.details</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<templates>
+						<t t-name="card">
+                            <div  style="display: flex; align-items: center; gap:20px;">
+                                <div>
+                                    <field name="image" widget="image" options="{'size': [100, 100]}"/>
+                                </div>
+                                <div >
+                                    <field name="name" /><br/>
+                                    <field name="age" /><br/>
+                                    <field name="subject"/><br/>
+                                    <field name="email"/><br/>
+                                    <button name="button" type="object" string="Delete Record"/>
+
+                                </div>
+                            </div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+        
+        <record id ="teacher_data" model="ir.actions.act_window">
+            <field name="name">Teacher Detail</field>
+            <field name="res_model">teachers.details</field>
+            <field name="view_mode">list,form,kanban</field>
+        </record>    
+    </data>
+    <menuitem id='teacher_info' name="Teacher"  parent="school_details" sequence="1"/>
+    <menuitem id='teacher_Display' name="Teacher_info" action="teacher_data" parent="teacher_info" sequence="1"/>
+
+</odoo> 
