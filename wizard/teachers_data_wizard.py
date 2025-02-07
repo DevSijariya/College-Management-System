@@ -11,4 +11,4 @@ class TeachersDataDelete(models.TransientModel):
     )
 
     def action_delete_data(self):
-        self.teachers_id._data_delete()
+        self.teachers_id.unlink()

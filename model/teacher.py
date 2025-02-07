@@ -66,8 +66,7 @@ class TeacherDetail(models.Model):
                 record['age'] = 0 
 
 
-    def _data_delete(self):
-        self.unlink()
+
 
     @staticmethod 
     def button():
